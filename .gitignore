@@ -1,0 +1,4 @@
+*.pic
+/.git/
+/.vscode/
+/.venv/
