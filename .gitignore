@@ -2,6 +2,7 @@
 /.git/
 /.vscode/
 /.venv/
+/__pycache__/
 
 !*.py
 !/tictactoe/
