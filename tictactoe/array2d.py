@@ -1,8 +1,10 @@
 """
 Array2D module
+
+Compatibility: Python 3.9+
 """
 
-from typing import Any,List
+from typing import Any
 
 
 class CoordinateError(Exception):
@@ -45,7 +47,7 @@ class Array2D:
             self._fields.append(row)
 
 
-    def get_vector(self, x: int, y: int, dx: int, dy: int) -> List[Any]:
+    def get_vector(self, x: int, y: int, dx: int, dy: int) -> list[Any]:
         """Get vector.
 
         Args:
@@ -55,7 +57,7 @@ class Array2D:
             dy (int): Delta Y (usually -1, 0, or 1) used to iterate over fields
 
         Returns:
-            List[Any]: List of fields in the vector
+            list[Any]: List of fields in the vector
         """
 
         if x not in range(self.size_x) or y not in range(self.size_y):
@@ -68,27 +70,27 @@ class Array2D:
         return result
 
 
-    def get_column(self, x: int) -> List[Any]:
+    def get_column(self, x: int) -> list[Any]:
         """Get fields from column.
 
         Args:
             x (int): Column of starting field
 
         Returns:
-            List[Any]: List of fields in the column
+            list[Any]: List of fields in the column
         """
 
         return self.get_vector(x, 0, 0, 1)
 
 
-    def get_row(self, y: int) -> List[Any]:
+    def get_row(self, y: int) -> list[Any]:
         """Get fields from row.
 
         Args:
             y (int): Row of starting field
 
         Returns:
-            List[Any]: List of fields in the row
+            list[Any]: List of fields in the row
         """
 
         return self.get_vector(0, y, 1, 0)
