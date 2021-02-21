@@ -1,4 +1,7 @@
-*.pic
+*.pyc
 /.git/
 /.vscode/
 /.venv/
+
+!*.py
+!/tictactoe/
