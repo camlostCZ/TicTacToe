@@ -62,10 +62,14 @@ class Array2D:
 
         if x not in range(self.size_x) or y not in range(self.size_y):
             raise CoordinateError(f"Invalid coordinates [{x}, {y}]")
+
+        if dx == 0 and dy == 0:
+            raise ValueError("Both steps cannot be 0")
+
         result = []
         i, j = (x, y)
-        while i < self.size_x and j < self.size_y:
-            result.append(self._fields[i][j])
+        while i in range(self.size_x) and j in range(self.size_y):
+            result.append(self._fields[j][i])
             i, j = (i + dx, j + dy)
         return result
 
