@@ -57,8 +57,8 @@ class Board(Array2D):
         if x not in range(self.size_x) or y not in range(self.size_y):
             raise CoordinateError(f"Invalid coordinates [{x}, {y}]")
 
-        if self._fields[x][y] == self._empty_field:
-            self._fields[x][y] = symbol
+        if self._fields[y][x] == self._empty_field:
+            self._fields[y][x] = symbol
             self._moves_left += -1
             self._f_win = self._check_win(x, y)
         else:
@@ -142,5 +142,5 @@ class Board(Array2D):
         """
 
         vectors: list[list[str]] = self._build_win_vectors(x, y)
-        tests = (is_vector_equal(item, self._fields[x][y]) for item in vectors)
-        return self._fields[x][y] != self._empty_field and len([x for x in tests if x]) > 0
+        tests = (is_vector_equal(item, self._fields[y][x]) for item in vectors)
+        return self._fields[y][x] != self._empty_field and len([item for item in tests if item]) > 0
