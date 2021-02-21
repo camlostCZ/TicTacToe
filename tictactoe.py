@@ -72,11 +72,13 @@ def main():
 
     """
 
-    finished = False
-    while not finished:
-        game()
-        finished = input("Do you want to play again? (Y/N)  ").lower() != 'y'
-
+    try:
+        finished = False
+        while not finished:
+            game()
+            finished = input("Do you want to play again? (Y/N)  ").lower() != 'y'
+    except KeyboardInterrupt:
+        print("Interrupted by user.", file=sys.stderr)
 
 if __name__ == "__main__":
     main()

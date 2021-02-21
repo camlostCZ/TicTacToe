@@ -18,7 +18,10 @@ DEFAULT_BOARD_SIZE = 3
 
 
 class BoardError(Exception):
-    pass
+    """BoardError exception.
+
+    Used in case of illegal move.
+    """
 
 
 class Board(Array2D):
@@ -42,7 +45,7 @@ class Board(Array2D):
         self._f_win = False
 
 
-    def move(self, symbol: str, x: int, y: int):
+    def move(self, symbol: str, x: int, y: int):  # pylint: disable=invalid-name
         """Make a move on the board.
 
         Args:
@@ -73,10 +76,22 @@ class Board(Array2D):
 
 
     def is_draw(self) -> bool:
+        """Check if current position is a draw.
+
+        Returns:
+            bool: True if game is a draw, False owtherwise.
+        """
+
         return self.is_full() and not self.is_win()
 
 
     def is_win(self) -> bool:
+        """Check if current position is a win.
+
+        Returns:
+            bool: True in case of a win, False otherwise
+        """
+
         return self._f_win
 
 
@@ -94,7 +109,7 @@ class Board(Array2D):
         return result
 
 
-    def _build_win_vectors(self, x: int, y: int) -> list[list[str]]:
+    def _build_win_vectors(self, x: int, y: int) -> list[list[str]]:  # pylint: disable=invalid-name
         """Build list of vectors used to test for win.
 
         Args:
@@ -115,7 +130,7 @@ class Board(Array2D):
         return vectors
 
 
-    def _check_win(self, x: int, y: int) -> bool:
+    def _check_win(self, x: int, y: int) -> bool:  # pylint: disable=invalid-name
         """Check if last move was a winnig one.
 
         Args:
