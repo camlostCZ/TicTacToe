@@ -65,7 +65,7 @@ class Array2D:
         result = []
         i, j = (x, y)
         while i < self.size_x and j < self.size_y:
-            result.append(self._fields[i, j])
+            result.append(self._fields[i][j])
             i, j = (i + dx, j + dy)
         return result
 
