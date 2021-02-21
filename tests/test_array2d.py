@@ -1,6 +1,6 @@
 import pytest
 
-from array2d import Array2D, CoordinateError
+from tictactoe.array2d import Array2D, CoordinateError
 
 @pytest.fixture
 def new_array():
