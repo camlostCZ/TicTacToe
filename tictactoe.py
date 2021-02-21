@@ -33,7 +33,7 @@ def input_move(msg: str) -> str:
     """
 
     result = ""
-    while len(result) != 1 and result not in MOVE_CODES.keys():
+    while len(result) != 1 or result not in MOVE_CODES.keys():
         result = input(msg)
     return result
 
