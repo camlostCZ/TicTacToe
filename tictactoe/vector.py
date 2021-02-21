@@ -16,4 +16,8 @@ def is_vector_equal(vector: list[Any], value: Any) -> bool:
         bool: True if all values are equal to the value
     """
 
-    return len([x for x in vector if x == value]) == len(vector)
+    result = vector is not None
+    if result:
+        count = len(vector)
+        result = count > 0 and len([x for x in vector if x == value]) == count
+    return result
