@@ -10,8 +10,8 @@ Usage:
       If either of them returns True, game ends.
 """
 
-from array2d import Array2D, CoordinateError
-from vector import is_vector_equal
+from .array2d import Array2D, CoordinateError
+from .vector import is_vector_equal
 
 
 DEFAULT_BOARD_SIZE = 3
@@ -55,7 +55,7 @@ class Board(Array2D):
             raise CoordinateError(f"Invalid coordinates [{x}, {y}]")
 
         if self._fields[x][y] == self._empty_field:
-            self._fields[x][y] == symbol
+            self._fields[x][y] = symbol
             self._moves_left += -1
             self._f_win = self._check_win(x, y)
         else:
@@ -90,7 +90,7 @@ class Board(Array2D):
         result = ""
         for row_idx in range(self.size_y):
             result += " | ".join(self.get_row(row_idx)) + "\n"
-            result += "-" * self.size_x * 4 + "\n"
+            result += "-" * (3 * self.size_x) + "\n"
         return result
 
 
@@ -126,5 +126,6 @@ class Board(Array2D):
             bool: True if last move was a winning one, False otherwise
         """
 
-        tests = (is_vector_equal(x, self._fields[x][y]) for x in self._build_win_vectors(x, y))
+        vectors: list[list[str]] = self._build_win_vectors(x, y)
+        tests = (is_vector_equal(item, self._fields[x][y]) for item in vectors)
         return self._fields[x][y] != self._empty_field and len([x for x in tests if x]) > 0
